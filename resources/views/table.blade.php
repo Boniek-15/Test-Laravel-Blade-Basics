@@ -20,29 +20,12 @@
                         </thead>
                         <tbody>
                             @forelse ($users as $user)
-                                @if($loop->first)
-                                    <tr>
-                                        <td>{{$loop->iteration}}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td style="font-weight: bold">{{ $user->email }}</td>
-                                        <td>{{ $user->created_at }}</td>
-                                    </tr>
-                                @endif
-                                @if($loop->even)
-                                    <tr class="bg-red-100">
-                                        <td>{{$loop->iteration}}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->created_at }}</td>
-                                    </tr>
-                                @else
-                                    <tr>
-                                        <td>{{$loop->iteration}}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->created_at }}</td>
-                                    </tr>
-                                @endif
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->created_at }}</td>
+                                </tr>
                             @empty
                                 <tr>
                                     <td colspan="3">No content.</td>
