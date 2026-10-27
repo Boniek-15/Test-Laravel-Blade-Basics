@@ -12,21 +12,42 @@
                     <table>
                         <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Registered at</th>
                             </tr>
                         </thead>
-                        {{-- Task: add the loop here to show users, or the row "No content" --}}
                         <tbody>
-                            <tr>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->created_at }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">No content.</td>
-                            </tr>
+                            @forelse ($users as $user)
+                                @if($loop->first)
+                                    <tr>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td style="font-weight: bold">{{ $user->email }}</td>
+                                        <td>{{ $user->created_at }}</td>
+                                    </tr>
+                                @endif
+                                @if($loop->even)
+                                    <tr class="bg-red-100">
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->created_at }}</td>
+                                    </tr>
+                                @else
+                                    <tr>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->created_at }}</td>
+                                    </tr>
+                                @endif
+                            @empty
+                                <tr>
+                                    <td colspan="3">No content.</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
